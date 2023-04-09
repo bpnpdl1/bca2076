@@ -1,0 +1,9 @@
+.menu li{
+    list-style: none;
+   text-underline-offset : none;
+   display: block;
+   float: left;
+}
+.menu li a{
+    
+}
