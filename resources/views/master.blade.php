@@ -44,13 +44,9 @@
 
 <body>
 
-
-    @yield('content')
-    
-
-
-    <b4-footer class="bg-primary w-10 d-flex justify-content-center p-3">
-        Footer
-    </b4-footer>
+@yield('content')
+ <b4-footer class="bg-primary w-10 d-flex justify-content-center p-3">
+     Footer
+</b4-footer>
 </body>
 </html>

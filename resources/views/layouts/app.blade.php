@@ -13,24 +13,31 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <script src="{{asset('datatable/jquery-3.6.0.js')}}"></script>
+        <link rel="stylesheet" href="{{asset('datatable/datatables.css')}}">
+        <script src="{{asset('datatable/datatables.js')}}"></script>
+        
+
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
-
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
+       <div class="flex">
+        <div class="w-56 h-screen bg-blue-800 shadow-lg flex justify-center ">
+            <div class="menu flex items-center justify-center">
+                <div class="flex flex-col">
+                <a href="/dashboard" class="text-20 text-white m-3 border-b-2 hover:text-black w-100">Dashboard</a>
+                <a href="/category" class="text-20 text-white m-3">Categories</a>
+                <a href="/products" class="text-20 text-white m-3">Products</a>
+                <a href="/gallery" class="text-20 text-white m-3">Gallery</a>
+                <a href="/logout" class="text-20 text-white m-3">Logout</a>
+                </div>
+            </div>
         </div>
+        <div class="flex-1 bg-gray-200 p-10">
+            @yield('content')
+
+        </div>
+                
+       </div>
     </body>
 </html>
