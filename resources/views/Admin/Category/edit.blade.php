@@ -3,8 +3,8 @@
 
 <pre>
     @php
-       print_r($category);
+print_r($category->toArray()) ;
     @endphp
 </pre>
 
-@section
+@endsection

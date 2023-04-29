@@ -19,6 +19,8 @@
         <script src="{{asset('datatable/datatables.js')}}"></script>
         
 
+
+
     </head>
     <body class="font-sans antialiased">
        <div class="flex">
@@ -26,8 +28,8 @@
             <div class="menu flex items-center justify-center">
                 <div class="flex flex-col">
                 <a href="/dashboard" class="text-20 text-white m-3 border-b-2 hover:text-black w-100">Dashboard</a>
-                <a href="/category" class="text-20 text-white m-3">Categories</a>
-                <a href="/products" class="text-20 text-white m-3">Products</a>
+                <a href="/Category" class="text-20 text-white m-3">Categories</a>
+                <a href="/Products" class="text-20 text-white m-3">Products</a>
                 <a href="/gallery" class="text-20 text-white m-3">Gallery</a>
                 <a href="/logout" class="text-20 text-white m-3">Logout</a>
                 </div>

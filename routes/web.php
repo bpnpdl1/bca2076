@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,12 +26,22 @@ Route::get('/dashboard', function () {
 
 
 
-Route::get('/category',[CategoryController::class,'index'])->middleware('auth')->name('category.index');
-Route::get('/testdb',[CategoryController::class,'insert'])->middleware('auth')->name('category.testdb');
-Route::get('/categorystore',[CategoryController::class,'categorystore'])->middleware('auth')->name('category.testdb');
 
-Route::get('/addcategory',[CategoryController::class,'addcategory'])->middleware('auth')->name('category.addcategory');
-Route::get('/category/{id}/edit',[CategoryController::class,'edit'])->middleware('auth')->name('category.edit');
+Route::get('/Category',[CategoryController::class,'index'])->middleware('auth')->name('category.index');
+Route::get('/CreateCategory',[CategoryController::class,'create'])->middleware('auth')->name('category.create');
+Route::get('/EditCategory/{id}',[CategoryController::class,'edit'])->middleware('auth')->name('category.edit');
+Route::post('/StoreCategory',[CategoryController::class,'store'])->middleware('auth')->name('category.store');
+Route::get('/tandwind',function(){
+    return view('tandwind');
+});
+
+
+
+Route::get('/Products',[ProductsController::class,'index'])->middleware('auth')->name('products.index');
+Route::get('/Addproducts',[ProductsController::class,'create'])->middleware('auth')->name('products.addproducts');
+Route::post('/store',[ProductsController::class,'store'])->middleware('auth')->name('products.store');
+Route::get('/editproduct/{id}',[ProductsController::class,'edit'])->middleware('auth')->name('products.edit');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

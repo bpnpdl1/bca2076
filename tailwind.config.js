@@ -10,6 +10,10 @@ module.exports = {
 
     theme: {
         extend: {
+            tableLayout: {
+                auto: 'auto',
+                fixed: 'fixed',
+              },
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },

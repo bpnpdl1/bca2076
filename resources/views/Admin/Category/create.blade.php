@@ -5,7 +5,8 @@
 <h2 class="text-blue-400 font-bold text-4xl">Add Category</h2>
 <hr class="bg-blue-200 h-1 my-1">
 
-<form action="{{ route('category.categorystore') }}" class="form mx-2 my-2" method="POST">
+<form action="{{ route('category.store') }}" class="form mx-2 my-2" method="POST">
+    @csrf
     <div class="grid grid-col-2 grid-rows-3 gap-5">
         <div>
             <label for="">Category Name </label>
