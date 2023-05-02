@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,10 @@ Route::get('/dashboard', function () {
 
 
 
+Route::get('/formdata',[FormController::class,'index']);
+Route::post('/formdata',[FormController::class,'stored'])->name('formstore');
+Route::get('/viewimage',[FormController::class,'show']);
+
 Route::get('/Category',[CategoryController::class,'index'])->middleware('auth')->name('category.index');
 Route::get('/CreateCategory',[CategoryController::class,'create'])->middleware('auth')->name('category.create');
 Route::get('/EditCategory/{id}',[CategoryController::class,'edit'])->middleware('auth')->name('category.edit');
@@ -39,8 +44,9 @@ Route::get('/tandwind',function(){
 
 Route::get('/Products',[ProductsController::class,'index'])->middleware('auth')->name('products.index');
 Route::get('/Addproducts',[ProductsController::class,'create'])->middleware('auth')->name('products.addproducts');
-Route::post('/store',[ProductsController::class,'store'])->middleware('auth')->name('products.store');
+Route::post('/Productstore',[ProductsController::class,'store'])->name('products.store');
 Route::get('/editproduct/{id}',[ProductsController::class,'edit'])->middleware('auth')->name('products.edit');
+Route::post('/updateproduct',[ProductsController::class,'update'])->middleware('auth')->name('products.update');
 
 
 Route::middleware('auth')->group(function () {

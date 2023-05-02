@@ -15,8 +15,10 @@
       
         <tr>
             <th>SN</th>
+            <th>Image</th>
             <th>Name</th>
             <th>Price</th>
+            <th>Quantity</th>
             <th>Action</th>
         </tr>
 
@@ -30,8 +32,10 @@
        
         <tr>
             <td>{{$sn++}}</td>
+            <td><img src="{{asset('storage/'.$product['image'])}}" alt="image" width="60px" height="60px"></td>
             <td>{{ $product['name']}}</td>
             <td>{{ $product['price']}}</td>
+            <td>{{$product['quantity']}}</td>
             <td>
                 <a href="" class="bg-red-600 px-2 py-1 rounded-lg text-white">Trash</a>
                 <a href="{{ route('products.edit', ['id'=>$product['id']]) }}" class="bg-blue-600 px-2 py-1 rounded-lg text-white">Edit</a>
@@ -40,7 +44,11 @@
         @endforeach
     </tbody>
     </table>
+    
 </div>
+
+
+
 
 <script>
     let table=new DataTable('#mytable');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\products;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
 {
@@ -13,9 +14,13 @@ class ProductsController extends Controller
      */
     public function index()
     {
+      
         $products=products::all();
-        $products=compact('products');
-        return view('admin.products.index')->with($products);
+
+        $labels=$products->keys();
+        $data=$products->values();
+       
+        return view('admin.products.index')->with(compact('products','labels','data'));
     }
 
     /**
@@ -25,7 +30,9 @@ class ProductsController extends Controller
     
     public function create()
     {
-        return view('admin.products.addproducts');
+       
+       
+        return view('admin.products.create');
     }
 
     /**
@@ -34,12 +41,31 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         //
-        
+       
         $data=$request->validate([
-            'name'=>'require',
+            'name'=>'required',
+            'price'=>'required',
+            'image'=>'required|image',
+            'quantity'=>'required'
             
         ]);
-        products::create($data);
+
+
+$image=Storage::disk('public')->put('images',$request->file('image'));
+
+
+       $products=$request->toArray();
+
+       $product=[
+        'name'=>$products['name'],
+        'price'=>$products['price'],
+        'quantity'=>$products['quantity'],
+        'image'=>$image
+       ];
+        products::create($product);
+
+        
+   
         return redirect(route('products.index'));
     }
 
@@ -59,7 +85,7 @@ class ProductsController extends Controller
         $product=products::find($id);
 
          $product=compact('product');
-         return view('admin.products.editproducts')->with($product);
+         return view('admin.products.edit')->with($product);
         
     }
 
@@ -69,6 +95,7 @@ class ProductsController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        dd($request);
     }
 
     /**

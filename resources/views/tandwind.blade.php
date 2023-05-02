@@ -23,7 +23,7 @@
 
     </head>
     <body class="font-sans antialiased">
-    <div class="flex flex-row h-screen">
+    {{-- <div class="flex flex-row h-screen">
         <div class=" bg-gray-900 text-white w-60 flex-shrink-0 px-4 py-6 space-y-4">
            <div class="flex flex-row space-x-3 bg-slate-600 p-4 rounded-md">
             <i class="fa-solid fa-user text-xl"></i>
@@ -137,6 +137,8 @@
 
             </div>
         </div>
-    </div>
+    </div> --}}
+
+    <x-modal name="name"  show=true/>
     </body>
 </html>
